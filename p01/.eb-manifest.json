@@ -1,0 +1,17 @@
+{
+  "template": "composed",
+  "templates": [
+    "P01"
+  ],
+  "status": "parcial",
+  "arquivos": 35,
+  "indexHtml": true,
+  "indexCss": true,
+  "componentes": 10,
+  "imagens": {
+    "baixadas": 21
+  },
+  "faltando": [
+    "P01: 1 imagem(ns)"
+  ]
+}

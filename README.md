@@ -23,6 +23,10 @@ meu-site/             → https://seu-dominio.com/meu-site/
 
 Também são aceitos exports antigos no formato `slug/html/index.html`, com `slug/css/`, `slug/javascript/` e `slug/assets/`.
 
+## Página composta
+
+A página P01 foi adicionada em [`p01/`](p01/), com HTML, CSS, componentes e imagens. Ela será publicada em `/p01/` pelo script de build. Consulte [`p01/EASY-BUILDER.md`](p01/EASY-BUILDER.md) e o manifesto [`p01/.eb-manifest.json`](p01/.eb-manifest.json) para os detalhes da composição.
+
 ## Configurar Cloudflare Pages
 
 Na criação do projeto Pages, conecte o repositório GitHub e configure:
