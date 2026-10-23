@@ -95,10 +95,13 @@ export async function onRequestPost({ request, env }) {
     return json({ paymentUrl: paymentUrl.toString() });
   } catch (error) {
     console.error('Eduzz cart connection failed', { stage, name: error?.name ?? 'Error' });
+    const diagnostic = String(error?.message ?? 'unknown')
+      .replace(/[^a-zA-Z0-9 .:/_-]/g, '')
+      .slice(0, 120);
     return json(
       { error: 'Não conseguimos conectar à Eduzz agora. Tente novamente em instantes.' },
       502,
-      { 'x-eduzz-status': stage },
+      { 'x-eduzz-status': stage, 'x-eduzz-error': diagnostic },
     );
   }
 }
