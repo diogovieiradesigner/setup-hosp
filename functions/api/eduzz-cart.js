@@ -18,7 +18,7 @@ function json(data, status = 200) {
 }
 
 export async function onRequestPost({ request, env }) {
-  if (!env.EDUZZ_CLIENT_ID || !env.EDUZZ_CLIENT_SECRET) {
+  if (!env.EDUZZ_ACCESS_TOKEN) {
     return json({ error: 'O checkout está sendo configurado. Use o botão flutuante do WhatsApp para falar com a gente enquanto isso.' }, 503);
   }
 
@@ -46,25 +46,12 @@ export async function onRequestPost({ request, env }) {
   }
 
   try {
-    const tokenResponse = await fetch('https://accounts-api.eduzz.com/oauth/token', {
-      method: 'POST',
-      headers: { 'content-type': 'application/json', accept: 'application/json' },
-      body: JSON.stringify({
-        grant_type: 'client_credentials',
-        client_id: env.EDUZZ_CLIENT_ID,
-        client_secret: env.EDUZZ_CLIENT_SECRET,
-      }),
-    });
-    if (!tokenResponse.ok) return json({ error: 'Não conseguimos validar o checkout agora. Tente novamente mais tarde.' }, 502);
-    const tokenData = await tokenResponse.json();
-    if (!tokenData.access_token) return json({ error: 'Não conseguimos validar o checkout agora. Tente novamente mais tarde.' }, 502);
-
     const origin = new URL(request.url).origin;
     const cartResponse = await fetch('https://api.eduzz.com/sun/v1/cart', {
       method: 'POST',
       headers: {
         accept: 'application/json',
-        authorization: `Bearer ${tokenData.access_token}`,
+        authorization: `Bearer ${env.EDUZZ_ACCESS_TOKEN}`,
         'content-type': 'application/json',
       },
       body: JSON.stringify({
