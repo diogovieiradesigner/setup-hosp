@@ -1,13 +1,13 @@
 const products = {
-  'casaco-bela': { id: '3134292', description: 'Receita Casaco Bela' },
-  'conjunto-rubi': { id: '3134337', description: 'Conjunto Rubi, 2 peças' },
-  'conjunto-meli': { id: '3134327', description: 'Conjunto Meli' },
-  'sapatinho-pingo-de-ouro': { id: '3134343', description: 'Sapatinho Pingo de Ouro' },
-  'vestido-perola': { id: '3134340', description: 'Vestido Pérola, receita de tricô' },
-  'conjunto-zoe': { id: '3134323', description: 'Conjunto Zoé, 6 peças' },
-  'touca-pingo-de-ouro': { id: '3134345', description: 'Touca Pingo de Ouro' },
-  'conjunto-ariel': { id: '3134333', description: 'Conjunto Ariel, 3 peças' },
-  'vestido-isa': { id: '3134301', description: 'Vestido Isa' },
+  'casaco-bela': { id: '3134292', description: 'Receita Casaco Bela', price: 15 },
+  'conjunto-rubi': { id: '3134337', description: 'Conjunto Rubi, 2 peças', price: 15 },
+  'conjunto-meli': { id: '3134327', description: 'Conjunto Meli', price: 20 },
+  'sapatinho-pingo-de-ouro': { id: '3134343', description: 'Sapatinho Pingo de Ouro', price: 8 },
+  'vestido-perola': { id: '3134340', description: 'Vestido Pérola, receita de tricô', price: 15 },
+  'conjunto-zoe': { id: '3134323', description: 'Conjunto Zoé, 6 peças', price: 25 },
+  'touca-pingo-de-ouro': { id: '3134345', description: 'Touca Pingo de Ouro', price: 8 },
+  'conjunto-ariel': { id: '3134333', description: 'Conjunto Ariel, 3 peças', price: 15 },
+  'vestido-isa': { id: '3134301', description: 'Vestido Isa', price: 15 },
 };
 
 function json(data, status = 200) {
@@ -43,7 +43,12 @@ export async function onRequestPost({ request, env }) {
       return json({ error: 'Há um item inválido no carrinho. Atualize a página e tente novamente.' }, 400);
     }
     seen.add(item.productId);
-    items.push({ productId: product.id, description: product.description, quantity });
+    items.push({
+      productId: product.id,
+      description: product.description,
+      price: { value: product.price, currency: 'BRL' },
+      quantity,
+    });
   }
 
   let stage = 'prepare';
@@ -85,13 +90,6 @@ export async function onRequestPost({ request, env }) {
     const allowedCheckoutHosts = new Set(['sun.eduzz.com', 'chk.eduzz.com']);
     if (paymentUrl.protocol !== 'https:' || !allowedCheckoutHosts.has(paymentUrl.hostname)) {
       return json({ error: 'A Eduzz retornou um endereço de checkout inválido.' }, 502);
-    }
-    if (request.headers.get('x-debug-prices') === '1') {
-      return json({
-        items: Array.isArray(cart.items)
-          ? cart.items.map((item) => ({ productId: item.productId, price: item.price }))
-          : [],
-      });
     }
     return json({ paymentUrl: paymentUrl.toString() });
   } catch (error) {
