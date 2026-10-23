@@ -40,6 +40,8 @@ for dir in */; do
   fi
 
   cp -R "$dir" "$OUT/$slug"
+  # Keep the private client briefing in source control, not in the published page.
+  rm -f "$OUT/$slug/BRIEFING-PREENCHIDO.md"
   if [ "$entry" = "$dir/html/index.html" ]; then
     # Exports antigos guardam o HTML um nível abaixo dos seus assets/CSS/JS.
     sed \

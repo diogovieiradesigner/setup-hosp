@@ -1,1 +1,2 @@
-# Adicione redirects do Cloudflare no formato: /origem /destino código
+# Loja principal no domínio; páginas futuras continuam disponíveis por slug.
+/ /pontosdecroche/ 301

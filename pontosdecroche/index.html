@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#eee1d2">
+  <meta name="description" content="Receitas digitais de tricô para criar roupinhas, mantas e sapatinhos cheios de carinho.">
+  <title>Tricô para bebês — receitas feitas de carinho</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="site-header" id="topo">
+    <a class="brand" href="#topo" aria-label="Ponto de Crochê — início">
+      <span class="brand-logo" aria-hidden="true"></span>
+    </a>
+    <button class="menu-toggle" aria-label="Abrir menu" aria-expanded="false"><span></span><span></span></button>
+    <nav class="main-nav" aria-label="Navegação principal">
+      <a href="#colecao">E-books</a><a href="#como-funciona">Como funciona</a><a href="#duvidas">Dúvidas</a>
+      <button class="cart-button" type="button" aria-label="Abrir carrinho vazio" aria-haspopup="dialog" aria-controls="cart-dialog">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h2l2.1 10.1a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 1.9-1.4L20 8H6M10 20a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm7 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z"/></svg>
+        <span>Carrinho</span><span class="cart-count" aria-hidden="true">0</span>
+      </button>
+      <a class="nav-cta" href="#colecao">Ver coleção</a>
+    </nav>
+  </header>
+
+  <dialog class="cart-dialog" id="cart-dialog" aria-labelledby="cart-title">
+    <div class="cart-dialog-heading"><h2 id="cart-title">Seu carrinho</h2><button class="cart-close" type="button" aria-label="Fechar carrinho">×</button></div>
+    <p class="cart-empty">Seu carrinho está vazio.</p>
+    <div class="cart-items" aria-live="polite"></div>
+    <p class="cart-status" role="status" aria-live="polite"></p>
+    <button class="cart-browse cart-checkout" type="button" disabled>Finalizar compra na Eduzz <span aria-hidden="true">⟶</span></button>
+    <a class="cart-browse cart-browse-link" href="#colecao">Conhecer os e-books <span aria-hidden="true">⟶</span></a>
+  </dialog>
+
+  <main>
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow reveal">Receitas digitais de crochê para bebês</p>
+        <h1 id="hero-title" class="reveal delay-1"><span>Crie os primeiros</span><em>aconchegos em crochê.</em></h1>
+        <p class="hero-description reveal delay-2">Transforme fios em peças encantadoras para bebês<br class="desktop-copy-break"> com nossas receitas digitais de crochê, criando<br class="desktop-copy-break"> roupinhas, mantas e sapatinhos feitos à mão com muito amor e carinho.</p>
+        <a class="button reveal delay-3" href="#colecao">Explorar os e-books <span aria-hidden="true">⟶</span></a>
+        <div class="digital-note reveal delay-3"><svg viewBox="0 0 24 28" aria-hidden="true"><path d="M5 1h10l5 5v20H5zM15 1v6h5M8 12h9M8 16h9M8 20h6"/></svg><span>Receitas em formato digital</span></div>
+      </div>
+      <div class="hero-art" aria-label="Três roupinhas de crochê para bebês em tons pastel">
+        <div class="art-halo"></div>
+        <div class="art-photo"><img src="banner-croche-bebes.png" alt="Três peças infantis de crochê em tons pastel: casaquinho rosa, touca creme e sapatinhos verde-claro" fetchpriority="high"></div>
+        <div class="photo-wash"></div>
+        <div class="floating-yarn" aria-hidden="true"><span></span></div>
+        <div class="floating-sparkle sparkle-one" aria-hidden="true">✳</div><div class="floating-sparkle sparkle-two" aria-hidden="true">✳</div>
+      </div>
+      <div class="thread-line" aria-hidden="true"><svg viewBox="0 0 1600 100" preserveAspectRatio="none"><path d="M-15 54C90 50 155 90 280 69s174-44 288-15 157 42 272 14 177-44 300-10 202 24 306-8 162-29 184-14"/></svg></div>
+    </section>
+
+    <section class="categories" aria-label="Tipos de receitas">
+      <a href="#colecao" class="category reveal"><svg viewBox="0 0 56 56" aria-hidden="true"><path d="M18 9c3 4 17 4 20 0l5 6-5 5v26H18V20l-5-5zM18 20l10 7 10-7M28 27v19M15 46h26M22 11l6 6 6-6"/></svg><span>Casaquinhos</span></a>
+      <span class="category-divider" aria-hidden="true"></span>
+      <a href="#colecao" class="category reveal delay-1"><svg viewBox="0 0 56 56" aria-hidden="true"><path d="m8 20 20-13 20 13-20 13zM8 27l20 13 20-13M8 34l20 13 20-13M28 20v5"/></svg><span>Mantas</span></a>
+      <span class="category-divider" aria-hidden="true"></span>
+      <a href="#colecao" class="category reveal delay-2"><svg viewBox="0 0 56 56" aria-hidden="true"><path d="M19 11c2 5 16 5 18 0l9 5-5 8-5-2v25H20V22l-5 2-5-8zM20 22l8 7 8-7M28 29v18"/></svg><span>Conjuntos | vestido</span></a>
+      <span class="category-divider" aria-hidden="true"></span>
+      <a href="#colecao" class="category reveal delay-3"><svg viewBox="0 0 56 56" aria-hidden="true"><path d="M21 14c1-6 4-9 8-9s7 3 8 9l-8 4-8-4zM20 15h18v4H20zM7 29c4 3 7 3 11 0v9c0 5-4 8-10 8-5 0-8-3-6-7l3-5 2-5zM31 29c4 3 7 3 11 0v9c0 5-4 8-10 8-5 0-8-3-6-7l3-5 2-5zM9 32v5M33 32v5M5 43c4 2 8 2 12 0M29 43c4 2 8 2 12 0"/></svg><span>Sapatinhos e touca</span></a>
+    </section>
+
+    <section class="collection section-pad" id="colecao">
+      <div class="section-heading reveal"><p class="eyebrow">Um carinho em cada ponto</p><h2>Receitas para guardar<br><em>para sempre.</em></h2><p>Passo a passo claro, pensado para acompanhar você desde o primeiro ponto</p></div>
+      <div class="book-grid">
+        <article class="book-card reveal"><div class="book-visual"><img class="book-photo" src="assets/receitas/casaco-bela.jpg" alt="Casaco vermelho de bebê feito à mão" loading="lazy"><span class="book-label">01 · receita digital</span></div><div class="book-info"><div><h3>Casaco Bela</h3><p>Receita digital</p></div><button class="add-to-cart" type="button" data-product-id="casaco-bela" aria-label="Adicionar Casaco Bela ao carrinho"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h2l2.1 10.1a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 1.9-1.4L20 8H6M10 20a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm7 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z"/></svg></button></div></article>
+        <article class="book-card reveal delay-1"><div class="book-visual"><img class="book-photo" src="assets/receitas/conjunto-rubi-2-pecas.jpg" alt="Conjunto branco e vermelho com casaquinho e sapatinhos" loading="lazy"><span class="book-label">02 · receita digital</span></div><div class="book-info"><div><h3>Conjunto Rubi · 2 peças</h3><p>Receita digital</p></div><button class="add-to-cart" type="button" data-product-id="conjunto-rubi" aria-label="Adicionar Conjunto Rubi, 2 peças, ao carrinho"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h2l2.1 10.1a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 1.9-1.4L20 8H6M10 20a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm7 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z"/></svg></button></div></article>
+        <article class="book-card reveal delay-2"><div class="book-visual"><img class="book-photo" src="assets/receitas/conjunto-meli.jpg" alt="Conjunto rosa de bebê com casaquinho, touca e sapatinhos" loading="lazy"><span class="book-label">03 · receita digital</span></div><div class="book-info"><div><h3>Conjunto Meli</h3><p>Receita digital</p></div><button class="add-to-cart" type="button" data-product-id="conjunto-meli" aria-label="Adicionar Conjunto Meli ao carrinho"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h2l2.1 10.1a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 1.9-1.4L20 8H6M10 20a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm7 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z"/></svg></button></div></article>
+        <article class="book-card reveal delay-3"><div class="book-visual"><img class="book-photo" src="assets/receitas/sapatinho-pingo-de-ouro.png" alt="Par de sapatinhos de bebê em amarelo claro" loading="lazy"><span class="book-label">04 · receita digital</span></div><div class="book-info"><div><h3>Sapatinho Pingo de Ouro</h3><p>Receita digital</p></div><button class="add-to-cart" type="button" data-product-id="sapatinho-pingo-de-ouro" aria-label="Adicionar Sapatinho Pingo de Ouro ao carrinho"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h2l2.1 10.1a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 1.9-1.4L20 8H6M10 20a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm7 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z"/></svg></button></div></article>
+        <article class="book-card reveal"><div class="book-visual"><img class="book-photo" src="assets/receitas/vestido-perola.png" alt="Vestido infantil de tricô rosa claro com mangas compridas e laço branco" loading="lazy"><span class="book-label">05 · receita de tricô</span></div><div class="book-info"><div><h3>Vestido Pérola</h3><p>Receita de tricô</p></div><button class="add-to-cart" type="button" data-product-id="vestido-perola" aria-label="Adicionar Vestido Pérola ao carrinho"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h2l2.1 10.1a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 1.9-1.4L20 8H6M10 20a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm7 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z"/></svg></button></div></article>
+        <article class="book-card reveal delay-1"><div class="book-visual"><img class="book-photo" src="assets/receitas/conjunto-zoe.jpg" alt="Conjunto de tricô infantil em rosa e branco com casaquinho, calça, touca e sapatinhos" loading="lazy"><span class="book-label">06 · receita digital</span></div><div class="book-info"><div><h3>Conjunto Zoé · 6 peças</h3><p>Receita digital</p></div><button class="add-to-cart" type="button" data-product-id="conjunto-zoe" aria-label="Adicionar Conjunto Zoé, 6 peças, ao carrinho"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h2l2.1 10.1a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 1.9-1.4L20 8H6M10 20a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm7 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z"/></svg></button></div></article>
+        <article class="book-card reveal delay-2"><div class="book-visual"><img class="book-photo" src="assets/receitas/touca-pingo-de-ouro.jpg" alt="Touca amarela de bebê com pompom" loading="lazy"><span class="book-label">07 · receita digital</span></div><div class="book-info"><div><h3>Touca Pingo de Ouro</h3><p>Receita digital</p></div><button class="add-to-cart" type="button" data-product-id="touca-pingo-de-ouro" aria-label="Adicionar Touca Pingo de Ouro ao carrinho"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h2l2.1 10.1a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 1.9-1.4L20 8H6M10 20a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm7 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z"/></svg></button></div></article>
+        <article class="book-card reveal delay-3"><div class="book-visual"><img class="book-photo" src="assets/receitas/conjunto-ariel-3-pecas.jpg" alt="Conjunto infantil de crochê rosa claro com casaquinho, calça e sapatinhos" loading="lazy"><span class="book-label">08 · receita digital</span></div><div class="book-info"><div><h3>Conjunto Ariel · 3 peças</h3><p>Receita digital</p></div><button class="add-to-cart" type="button" data-product-id="conjunto-ariel" aria-label="Adicionar Conjunto Ariel, 3 peças, ao carrinho"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h2l2.1 10.1a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 1.9-1.4L20 8H6M10 20a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm7 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z"/></svg></button></div></article>
+        <article class="book-card reveal"><div class="book-visual"><img class="book-photo" src="assets/receitas/vestido-isa.png" alt="Vestido infantil de tricô em tons claros de rosa e lilás" loading="lazy"><span class="book-label">09 · receita digital</span></div><div class="book-info"><div><h3>Vestido Isa</h3><p>Receita digital</p></div><button class="add-to-cart" type="button" data-product-id="vestido-isa" aria-label="Adicionar Vestido Isa ao carrinho"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h2l2.1 10.1a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 1.9-1.4L20 8H6M10 20a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm7 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z"/></svg></button></div></article>
+      </div>
+    </section>
+
+    <section class="how section-pad" id="como-funciona"><div class="how-image reveal"><img src="assets/como-funciona/croche-manual.png" alt="Mãos fazendo crochê em peça branca e vermelha para bebê" loading="lazy"><span class="image-note">feito com calma, ponto por ponto</span></div><div class="how-copy reveal delay-1"><p class="eyebrow">Do primeiro ponto ao último</p><h2>Seu próximo<br>projeto começa<br><em>com um clique.</em></h2><ol class="steps"><li><span>01</span><div><h3>Escolha sua receita</h3><p>Encontre o projeto que combina com você.</p></div></li><li><span>02</span><div><h3>Receba na hora</h3><p>O e-book digital chega para você começar.</p></div></li><li><span>03</span><div><h3>Tricote com carinho</h3><p>Acompanhe instruções feitas para serem simples.</p></div></li></ol><a href="#colecao" class="text-link">Encontrar meu próximo projeto <span>⟶</span></a></div></section>
+
+    <section class="quote-band reveal"><span class="quote-mark">“</span><p>Peças pequenas, feitas com um amor que não cabe no novelo.</p><span class="quote-flower">✳</span></section>
+    <section class="purchase-guide section-pad" id="como-comprar" aria-labelledby="purchase-title">
+      <div class="section-heading reveal">
+        <p class="eyebrow">Compra e entrega</p>
+        <h2 id="purchase-title">Sua receita, <em>passo a passo.</em></h2>
+        <p>Escolha seu modelo, conclua o pagamento pela Eduzz e receba sua receita digital com todo o carinho.</p>
+      </div>
+      <div class="purchase-grid">
+        <article class="purchase-card reveal"><span class="purchase-number">01</span><h3>Escolha sua receita</h3><p>Adicione seus modelos favoritos ao carrinho para organizar seu pedido.</p></article>
+        <article class="purchase-card reveal delay-1"><span class="purchase-number">02</span><h3>Faça o pagamento</h3><p>Conclua o pedido pelo checkout seguro da Eduzz e escolha uma das opções de pagamento disponíveis.</p></article>
+        <article class="purchase-card reveal delay-2"><span class="purchase-number">03</span><h3>Receba a receita pelo WhatsApp</h3><p>Depois da confirmação do pagamento na Eduzz, enviamos sua receita digital pelo WhatsApp informado na compra.</p></article>
+        <article class="purchase-card reveal delay-3"><span class="purchase-number">04</span><h3>Baixe e comece a tricotar</h3><p>Baixe o e-book e acompanhe o passo a passo para começar sua peça.</p></article>
+      </div>
+      <div class="purchase-contact reveal"><p>Ficou com alguma dúvida? Estamos por aqui para ajudar.</p><a class="button" href="https://wa.me/5545920058122?text=Ol%C3%A1%21%20Quero%20tirar%20uma%20d%C3%BAvida%20sobre%20as%20receitas%20digitais." target="_blank" rel="noopener noreferrer">Tirar dúvidas pelo WhatsApp <span aria-hidden="true">↗</span></a></div>
+    </section>
+
+    <section class="faq section-pad" id="duvidas"><div class="section-heading reveal"><p class="eyebrow">Pode perguntar</p><h2>Um começo <em>sem dúvidas.</em></h2></div><div class="faq-list"><details class="reveal"><summary>Como recebo minha receita?</summary><p>As receitas são digitais. Depois da compra, você recebe o acesso para baixar e consultar no seu celular, tablet ou computador.</p></details><details class="reveal delay-1"><summary>Preciso saber tricotar?</summary><p>As instruções são organizadas para acompanhar cada etapa. Confira a descrição de cada e-book para ver o nível indicado e os materiais necessários.</p></details><details class="reveal delay-2"><summary>Posso imprimir o e-book?</summary><p>Sim. Você pode consultar a receita na tela ou imprimir uma cópia para acompanhar seu projeto.</p></details><details class="reveal"><summary>Preciso saber fazer crochê?</summary><p>Não precisa ser expert! Nossas receitas são explicadas passo a passo, com orientações para ajudar você durante a confecção. E, se surgir alguma dúvida, você também conta com suporte para não precisar fazer tudo sozinha!</p></details><details class="reveal"><summary>As receitas incluem gráficos?</summary><p>Sim! Nossas receitas contam com instruções detalhadas, gráficos e guias de pontos para facilitar o seu aprendizado e ajudar você a criar cada peça com mais confiança.</p></details><details class="reveal"><summary>As receitas são para quais tamanhos de bebê?</summary><p>Cada receita possui suas próprias indicações de tamanho, para que você saiba exatamente para qual fase do bebê a peça foi pensada. Confira os detalhes de cada modelo antes de começar!</p></details><details class="reveal"><summary>Posso acessar minha receita pelo celular?</summary><p>Sim! Você pode acessar suas receitas pelo celular, tablet ou computador, sempre que quiser. E, se preferir acompanhar cada etapa no papel, também pode imprimir o e-book.</p></details><details class="reveal"><summary>Posso vender as peças que fizer com as receitas?</summary><p>Sim! Você pode transformar nossas receitas em lindas peças de crochê feitas à mão e comercializar suas criações.</p></details><details class="reveal"><summary>As receitas são minhas após a compra?</summary><p>Sim! Após a compra, você terá acesso vitalício à receita adquirida, podendo consultá-la sempre que quiser, sem se preocupar com o prazo de acesso.</p></details></div></section>
+  </main>
+  <footer class="site-footer"><a class="brand" href="#topo" aria-label="Ponto de Crochê — voltar ao início"><span class="brand-logo" aria-hidden="true"></span></a><p>Feito à mão, pensado com carinho.</p><a href="#topo" class="back-top">Voltar ao início ↑</a></footer>
+  <a class="whatsapp-float" href="https://wa.me/5545920058122?text=Ol%C3%A1%21%20Quero%20saber%20mais%20sobre%20as%20receitas%20de%20croch%C3%AA%20para%20beb%C3%AAs." target="_blank" rel="noopener noreferrer" aria-label="Fale diretamente pelo WhatsApp, abre em nova aba">
+    <svg viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M16.04 3C8.87 3 3.04 8.8 3.04 15.97c0 2.29.6 4.53 1.73 6.5L3 29l6.7-1.75a13.1 13.1 0 0 0 6.34 1.62h.01c7.17 0 13-5.82 13-12.98A12.9 12.9 0 0 0 16.04 3Zm.01 23.67h-.01a10.9 10.9 0 0 1-5.56-1.52l-.4-.24-3.98 1.04 1.06-3.88-.26-.4a10.84 10.84 0 0 1-1.67-5.7c0-5.98 4.86-10.84 10.83-10.84 2.9 0 5.62 1.13 7.67 3.18a10.78 10.78 0 0 1 3.17 7.68c0 5.97-4.86 10.83-10.85 10.83Zm5.95-8.12c-.32-.16-1.88-.93-2.17-1.03-.29-.1-.5-.16-.71.16-.21.32-.82 1.03-1 1.24-.19.21-.37.24-.69.08-.32-.16-1.34-.49-2.55-1.57-.94-.84-1.57-1.88-1.75-2.2-.18-.32-.02-.49.14-.65.14-.14.32-.37.48-.56.16-.19.21-.32.32-.53.1-.21.05-.4-.03-.56-.08-.16-.71-1.72-.98-2.35-.26-.62-.52-.54-.71-.55h-.61c-.21 0-.55.08-.84.4-.29.32-1.1 1.08-1.1 2.64s1.13 3.07 1.29 3.28c.16.21 2.22 3.39 5.38 4.75.75.32 1.34.51 1.8.65.76.24 1.45.21 2 .13.61-.09 1.88-.77 2.14-1.51.26-.75.26-1.39.18-1.52-.08-.13-.29-.21-.61-.37Z"/></svg>
+    <span>Fale pelo WhatsApp</span>
+  </a>
+</body>
+</html>
