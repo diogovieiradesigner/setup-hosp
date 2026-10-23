@@ -60,7 +60,7 @@ html{scroll-padding-top:104px}
 .whatsapp-float:hover{background:#20c45e;transform:translateY(-3px);box-shadow:0 11px 28px #17362245}
 .whatsapp-float:focus-visible{outline:3px solid var(--ink);outline-offset:4px}
 .whatsapp-float svg{width:24px;height:24px;flex:none}
-@media(max-width:640px){.whatsapp-float{right:18px;bottom:18px;width:58px;height:58px;justify-content:center;padding:12px}.whatsapp-float svg{width:30px;height:30px}.whatsapp-float span{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}}
+@media(max-width:640px){.whatsapp-float{right:18px;bottom:96px;width:58px;height:58px;justify-content:center;padding:12px}.whatsapp-float svg{width:30px;height:30px}.whatsapp-float span{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}}
 
 
 
