@@ -86,6 +86,13 @@ export async function onRequestPost({ request, env }) {
     if (paymentUrl.protocol !== 'https:' || !allowedCheckoutHosts.has(paymentUrl.hostname)) {
       return json({ error: 'A Eduzz retornou um endereço de checkout inválido.' }, 502);
     }
+    if (request.headers.get('x-debug-prices') === '1') {
+      return json({
+        items: Array.isArray(cart.items)
+          ? cart.items.map((item) => ({ productId: item.productId, price: item.price }))
+          : [],
+      });
+    }
     return json({ paymentUrl: paymentUrl.toString() });
   } catch (error) {
     console.error('Eduzz cart connection failed', { stage, name: error?.name ?? 'Error' });
