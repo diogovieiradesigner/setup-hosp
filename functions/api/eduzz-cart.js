@@ -10,10 +10,14 @@ const products = {
   'vestido-isa': { id: '3134301', description: 'Vestido Isa' },
 };
 
-function json(data, status = 200) {
+function json(data, status = 200, extraHeaders = {}) {
   return new Response(JSON.stringify(data), {
     status,
-    headers: { 'content-type': 'application/json; charset=utf-8', 'cache-control': 'no-store' },
+    headers: {
+      'content-type': 'application/json; charset=utf-8',
+      'cache-control': 'no-store',
+      ...extraHeaders,
+    },
   });
 }
 
@@ -61,9 +65,23 @@ export async function onRequestPost({ request, env }) {
         items,
       }),
     });
-    const cart = await cartResponse.json();
+    const responseBody = await cartResponse.text();
+    let cart = null;
+    try {
+      cart = JSON.parse(responseBody);
+    } catch {
+      // A resposta de erro da Eduzz pode não ser JSON; nunca repasse o corpo ao navegador.
+    }
     if (!cartResponse.ok || typeof cart.paymentUrl !== 'string') {
-      return json({ error: 'A Eduzz não conseguiu criar este checkout. Tente novamente em instantes.' }, 502);
+      console.error('Eduzz cart request failed', {
+        status: cartResponse.status,
+        code: cart?.code ?? null,
+      });
+      return json(
+        { error: 'A Eduzz não conseguiu criar este checkout. Tente novamente em instantes.' },
+        502,
+        { 'x-eduzz-status': String(cartResponse.status) },
+      );
     }
 
     const paymentUrl = new URL(cart.paymentUrl);
@@ -71,7 +89,12 @@ export async function onRequestPost({ request, env }) {
       return json({ error: 'A Eduzz retornou um endereço de checkout inválido.' }, 502);
     }
     return json({ paymentUrl: paymentUrl.toString() });
-  } catch {
-    return json({ error: 'Não conseguimos conectar à Eduzz agora. Tente novamente em instantes.' }, 502);
+  } catch (error) {
+    console.error('Eduzz cart connection failed', { name: error?.name ?? 'Error' });
+    return json(
+      { error: 'Não conseguimos conectar à Eduzz agora. Tente novamente em instantes.' },
+      502,
+      { 'x-eduzz-status': 'network' },
+    );
   }
 }
