@@ -49,8 +49,11 @@ export async function onRequestPost({ request, env }) {
     items.push({ productId: product.id, description: product.description, quantity });
   }
 
+  let stage = 'prepare';
   try {
     const origin = new URL(request.url).origin;
+    const orderId = crypto.randomUUID();
+    stage = 'fetch';
     const cartResponse = await fetch('https://api.eduzz.com/sun/v1/cart', {
       method: 'POST',
       headers: {
@@ -59,12 +62,13 @@ export async function onRequestPost({ request, env }) {
         'content-type': 'application/json',
       },
       body: JSON.stringify({
-        orderId: crypto.randomUUID(),
+        orderId,
         postbackUrl: `${origin}/api/eduzz-postback`,
         returnUrl: `${origin}/pontosdecroche/#colecao`,
         items,
       }),
     });
+    stage = 'read';
     const responseBody = await cartResponse.text();
     let cart = null;
     try {
@@ -90,11 +94,11 @@ export async function onRequestPost({ request, env }) {
     }
     return json({ paymentUrl: paymentUrl.toString() });
   } catch (error) {
-    console.error('Eduzz cart connection failed', { name: error?.name ?? 'Error' });
+    console.error('Eduzz cart connection failed', { stage, name: error?.name ?? 'Error' });
     return json(
       { error: 'Não conseguimos conectar à Eduzz agora. Tente novamente em instantes.' },
       502,
-      { 'x-eduzz-status': 'network' },
+      { 'x-eduzz-status': stage },
     );
   }
 }
