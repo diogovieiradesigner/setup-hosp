@@ -22,7 +22,8 @@ function json(data, status = 200, extraHeaders = {}) {
 }
 
 export async function onRequestPost({ request, env }) {
-  if (!env.EDUZZ_ACCESS_TOKEN) {
+  const accessToken = String(env.EDUZZ_ACCESS_TOKEN ?? '').replace(/\s+/g, '');
+  if (!accessToken) {
     return json({ error: 'O checkout está sendo configurado. Use o botão flutuante do WhatsApp para falar com a gente enquanto isso.' }, 503);
   }
 
@@ -58,7 +59,7 @@ export async function onRequestPost({ request, env }) {
       method: 'POST',
       headers: {
         accept: 'application/json',
-        authorization: `Bearer ${env.EDUZZ_ACCESS_TOKEN}`,
+        authorization: `Bearer ${accessToken}`,
         'content-type': 'application/json',
       },
       body: JSON.stringify({
