@@ -91,7 +91,11 @@ export async function onRequestPost({ request, env }) {
 
     const paymentUrl = new URL(cart.paymentUrl);
     if (paymentUrl.protocol !== 'https:' || paymentUrl.hostname !== 'sun.eduzz.com') {
-      return json({ error: 'A Eduzz retornou um endereço de checkout inválido.' }, 502);
+      return json(
+        { error: 'A Eduzz retornou um endereço de checkout inválido.' },
+        502,
+        { 'x-eduzz-checkout-host': paymentUrl.hostname },
+      );
     }
     return json({ paymentUrl: paymentUrl.toString() });
   } catch (error) {
