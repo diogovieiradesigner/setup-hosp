@@ -10,14 +10,10 @@ const products = {
   'vestido-isa': { id: '3134301', description: 'Vestido Isa' },
 };
 
-function json(data, status = 200, extraHeaders = {}) {
+function json(data, status = 200) {
   return new Response(JSON.stringify(data), {
     status,
-    headers: {
-      'content-type': 'application/json; charset=utf-8',
-      'cache-control': 'no-store',
-      ...extraHeaders,
-    },
+    headers: { 'content-type': 'application/json; charset=utf-8', 'cache-control': 'no-store' },
   });
 }
 
@@ -82,31 +78,17 @@ export async function onRequestPost({ request, env }) {
         status: cartResponse.status,
         code: cart?.code ?? null,
       });
-      return json(
-        { error: 'A Eduzz não conseguiu criar este checkout. Tente novamente em instantes.' },
-        502,
-        { 'x-eduzz-status': String(cartResponse.status) },
-      );
+      return json({ error: 'A Eduzz não conseguiu criar este checkout. Tente novamente em instantes.' }, 502);
     }
 
     const paymentUrl = new URL(cart.paymentUrl);
-    if (paymentUrl.protocol !== 'https:' || paymentUrl.hostname !== 'sun.eduzz.com') {
-      return json(
-        { error: 'A Eduzz retornou um endereço de checkout inválido.' },
-        502,
-        { 'x-eduzz-checkout-host': paymentUrl.hostname },
-      );
+    const allowedCheckoutHosts = new Set(['sun.eduzz.com', 'chk.eduzz.com']);
+    if (paymentUrl.protocol !== 'https:' || !allowedCheckoutHosts.has(paymentUrl.hostname)) {
+      return json({ error: 'A Eduzz retornou um endereço de checkout inválido.' }, 502);
     }
     return json({ paymentUrl: paymentUrl.toString() });
   } catch (error) {
     console.error('Eduzz cart connection failed', { stage, name: error?.name ?? 'Error' });
-    const diagnostic = String(error?.message ?? 'unknown')
-      .replace(/[^a-zA-Z0-9 .:/_-]/g, '')
-      .slice(0, 120);
-    return json(
-      { error: 'Não conseguimos conectar à Eduzz agora. Tente novamente em instantes.' },
-      502,
-      { 'x-eduzz-status': stage, 'x-eduzz-error': diagnostic },
-    );
+    return json({ error: 'Não conseguimos conectar à Eduzz agora. Tente novamente em instantes.' }, 502);
   }
 }
